@@ -11,12 +11,12 @@ with open('usa-domestic-flight-2019.csv',newline='') as csv_file:
         destination = line[11]
         mounth = int(line[12])
 
-        if mounth == 12 and passengers != 0:
-            if origin in network.keys():
-                if destination not in network[origin]:
-                    network[origin].append(destination)
-            else:
-                network[origin] = [destination]
+        # if mounth == 12 and passengers != 0:
+        if origin in network.keys():
+            if destination not in network[origin]:
+                network[origin].append(destination)
+        else:
+            network[origin] = [destination]
 
     print('Number of airports: ',len(network.keys()))
 
