@@ -19,20 +19,20 @@ def is_path_between(V,source, dest):
         # print('\tlist_visit ', list_visit)
         # print('\tcurent_node ',curent_node)
         if curent_node == dest:
-            print('BINGO!')
+            # print('BINGO!')
             return True
         else:
             if curent_node not in list_visit:
                 list_visit.append(curent_node)
                 list_to_check.extend(V[curent_node])
-            # print('\t\tlist_to_check ', list_to_check)
-            # print('\t\tlist_visit ', list_visit)
-            # print('\t\tcurent_node ', curent_node)
+            print('\t\tlist_to_check ', list_to_check)
+            print('\t\tlist_visit ', list_visit)
+            print('\t\tcurent_node ', curent_node)
     return False
 
 
-# for s in V.keys():
-#     for d in V.keys():
-#         if s != d:
-#             print(f' Path {s} - {d} = ', is_path_between(V, s, d))
+for s in V.keys():
+    for d in V.keys():
+        if s != d:
+            print(f' Path {s} - {d} = ', is_path_between(V, s, d))
 print(' Path E - H = ', is_path_between(V, 'E', 'H'))
