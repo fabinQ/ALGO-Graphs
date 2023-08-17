@@ -1,1 +1,1 @@
-This repository contains an assignment from a course on graphs in Python.
+In this repository is task from cours udemy
