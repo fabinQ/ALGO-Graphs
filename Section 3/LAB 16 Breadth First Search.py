@@ -1,6 +1,5 @@
 import csv
-from operator import itemgetter
-network ={}
+network = {}
 
 
 def is_path_between(V, source, dest):
@@ -8,14 +7,13 @@ def is_path_between(V, source, dest):
     list_visited = []
 
     while list_to_check:
-        curent_node = list_to_check.pop(0)
-
-        if curent_node == dest:
+        current_node = list_to_check.pop(0)
+        if current_node == dest:
             return True
         else:
-            list_visited.append(curent_node)
-            for i in V[curent_node]:
-                if i not in list_visited and not list_to_check:
+            list_visited.append(current_node)
+            for i in V[current_node]:
+                if i not in list_to_check and list_visited:
                     list_to_check.append(i)
     return False
 
@@ -45,10 +43,13 @@ for origin in current_keys:
 
 start = 'San Francisco, CA'
 stop = 'Vernal, UT'
+print(id(start), id(stop))
 print(f'connection from {start} to {stop}: {is_path_between(network, start, stop)}')
 start = 'Vernal, UT'
 stop = 'San Francisco, CA'
+print(id(start), id(stop))
 print(f"connection from {start} to {stop}: {is_path_between(network, start, stop)}")
 start = 'Kotzebue, AK'
 stop = 'Danger Bay, AK'
+print(id(start), id(stop))
 print(f"connection from {start} to {stop}: {is_path_between(network, start, stop)}")
