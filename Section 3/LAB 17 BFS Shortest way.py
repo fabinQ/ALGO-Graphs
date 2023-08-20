@@ -2,6 +2,9 @@ import csv
 
 network = {}
 
+# Młody patrz na to
+# https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
 def is_path_between(V, origin, dest):
     list_to_check = [[origin]]
     list_visited = []
