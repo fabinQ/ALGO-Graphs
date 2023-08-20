@@ -11,7 +11,12 @@ def is_path_between(V, origin, dest):
         if current_node == dest:
             return current_path
         else:
-            pass
+            if current_node not in list_visited:
+                list_visited.append(current_node)
+                for i in V[current_node]:
+                    new_path = current_path.copy()
+                    new_path.append(i)
+                    list_to_check.append(new_path)
 
 
 with open('..\\Section 2\\usa-domestic-flight-2019.csv',newline='') as csv_file:
@@ -30,20 +35,19 @@ with open('..\\Section 2\\usa-domestic-flight-2019.csv',newline='') as csv_file:
                 network[origin]=[destination]
 
 current_keys = list(network.keys())
-for origin in network.keys():
+for origin in current_keys:
     for destination in network[origin]:
         if destination not in network.keys():
             network[destination]=[]
 
 start = 'San Francisco, CA'
 stop = 'Vernal, UT'
-print(id(start), id(stop))
 print(f'connection from {start} to {stop}: {is_path_between(network, start, stop)}')
+
 start = 'Vernal, UT'
 stop = 'San Francisco, CA'
-print(id(start), id(stop))
 print(f"connection from {start} to {stop}: {is_path_between(network, start, stop)}")
+
 start = 'Kotzebue, AK'
 stop = 'Danger Bay, AK'
-print(id(start), id(stop))
 print(f"connection from {start} to {stop}: {is_path_between(network, start, stop)}")
