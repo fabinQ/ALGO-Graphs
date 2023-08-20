@@ -7,6 +7,8 @@ V = {
     'Q': ['P', 'K', 'H'],
     'H': ['P', 'Q', 'K']
 }
+# Młody patrz na to
+# https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 def is_path_between(V,source, dest):
     list_to_check = [[source]]
