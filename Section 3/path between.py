@@ -21,10 +21,10 @@ def is_path_between(V,source, dest):
                 for element in V[curent_node]:
                     if element not in list_visited and not list_to_check :
                         list_to_check.append(element)
-            print('curent_node ', curent_node)
-            print('list_to_check ', list_to_check)
-            print('list_visited ', list_visited)
-            print()
+            # print('curent_node ', curent_node)
+            # print('list_to_check ', list_to_check)
+            # print('list_visited ', list_visited)
+            # print()
     return False
 
 
