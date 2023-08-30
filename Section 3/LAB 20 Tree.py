@@ -1,4 +1,6 @@
 def get_root(graph):
+    # To find the root in a graph, you need to traverse the columns of the matrix vertically.
+    # Wherever the sum is equal to 0, it indicates that there is no parent, meaning that it is the root of the graph.
     the_root = None
     # review all columns
     for c in range(len(graph)):
@@ -15,7 +17,24 @@ def get_root(graph):
 
 
 def is_tree(graph):
-     pass
+     root = get_root(graph)
+     if root == None:
+         return False
+     list_to_visited = [root]
+     list_visited = []
+
+     while list_to_visited:
+         current = list_to_visited.pop(0)
+         # print(current)
+         if current in list_visited:
+             return False
+         else:
+             list_visited.append(current)
+             for element in range(len(graph)):
+                 if graph[current][element] == 1:
+                     list_to_visited.append(element)
+
+     return len(list_visited) == len(graph)
 
 
 names = ['1 CEO', '2 Cognitive', '2 Systems', '2 Operations', '3 Healthcare', '3 Cloud', '3 Research', '3 Security', '3 Storage']
@@ -54,3 +73,6 @@ structure3 = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+print(is_tree(structure1))
+print(is_tree(structure2))
+print(is_tree(structure3))
