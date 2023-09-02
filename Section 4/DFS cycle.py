@@ -10,6 +10,7 @@ def has_cycle_to_node(graph, node, visited, path):
 
     visited[node] = True
     path.append(node)
+    print(path)
     print('node: ', node)
     print(visited)
 
