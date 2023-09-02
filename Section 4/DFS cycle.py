@@ -3,20 +3,17 @@ graph = [
     [2, 3, 4],
     [3],
     [],
-    [0, 5],
-    [5]
+    [5],
+    [],
+    [7],
+    [6]
 ]
 def has_cycle_to_node(graph, node, visited, path):
 
     visited[node] = True
     path.append(node)
-    print(path)
-    print('node: ', node)
-    print(visited)
 
     for neighbour in graph[node]:
-        print('neighbour ', neighbour)
-        print(visited[neighbour], '\n')
         if not visited[neighbour]:
             if has_cycle_to_node(graph, neighbour, visited, path):
                 return True
@@ -25,7 +22,7 @@ def has_cycle_to_node(graph, node, visited, path):
             while cycle[0] != neighbour:
                 del cycle[0]
             cycle.append(neighbour)
-            print(cycle)
+            print('cycle: ', cycle)
             return True
     del path[-1]
     return False
@@ -35,8 +32,6 @@ def has_cycle(graph):
     path = []
 
     for node in range(len(graph)):
-        print('node: ',node)
-        print(visited[node])
         if not visited[node]:
             if has_cycle_to_node(graph, node, visited, path):
                 return True
@@ -47,4 +42,3 @@ if has_cycle(graph):
     print('Graph has a cycle')
 else:
     print('Graph has no cycle')
-# print(has_cycle(graph))
