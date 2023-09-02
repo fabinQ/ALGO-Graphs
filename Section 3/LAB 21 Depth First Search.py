@@ -25,7 +25,7 @@ def is_tree(graph):
 
      while list_to_visited:
          current = list_to_visited.pop()
-         print(current)
+         print(names[current].rsplit(' ')[1])
          if current in list_visited:
              return False
          else:
