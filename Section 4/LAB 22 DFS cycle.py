@@ -48,3 +48,4 @@ for candidate in range(len(names)):
         history[source][candidate] = 0
     else:
         print("Udało się!")
+        print()
