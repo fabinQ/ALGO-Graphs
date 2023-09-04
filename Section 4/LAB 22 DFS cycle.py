@@ -21,10 +21,20 @@ def has_cycle_to_node(graph, node, visited, path):
             current_neighbours.append(n)
 
     for neighbour in current_neighbours:
-        if not neighbour in visited:
-            print(neighbour)
-            # pass
-            # has_cycle_to_node(graph, neighbour, visited, path)
+        print(neighbour, visited[neighbour])
+        if not visited[neighbour]:
+            visited[neighbour] = True
+            if has_cycle_to_node(graph, neighbour, visited, path):
+                return True
+    if neighbour in path:
+        cycle = path.copy()
+        if cycle[0] != neighbour:
+            del cycle[0]
+        cycle.append(neighbour)
+        print('cycle ',cycle)
+    del path[-1]
+    return False
+
 
 source = 4
 
@@ -34,4 +44,7 @@ for candidate in range(len(names)):
     history[source][candidate] = 1
     # print(candidate,'\n')
     # if candidate not in visited[candidate]:
-    has_cycle_to_node(history, source, visited, path)
+    if not has_cycle_to_node(history, source, visited, path):
+        history[source][candidate] = 0
+    else:
+        print("Udało się!")
