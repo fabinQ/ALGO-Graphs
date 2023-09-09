@@ -9,7 +9,15 @@ graph = {
 }
 
 def get_cheapest_node(cost_dic, procesed_list):
-    pass
+    cheapest_cost = float('inf')
+    cheapest_name = None
+
+    for name, cost in cost_dic.items():
+        if name not in procesed_list and cost < cheapest_cost:
+            cheapest_cost = cost
+            cheapest_name = name
+
+    return cheapest_name
 
 current_node = "Ciudad Polacca"
 cost = {}
@@ -17,7 +25,8 @@ parents = {}
 processed = []
 
 for node in graph.keys():
-    cost[node] = float('int')
+    cost[node] = float('inf')
+cost[current_node] = 0
 
 while current_node:
 
@@ -25,5 +34,20 @@ while current_node:
         if cost[neighbour] > cost[current_node] + graph[current_node][neighbour]:
             cost[neighbour] = cost[current_node] + graph[current_node][neighbour]
             parents[neighbour] = current_node
-        processed.append(current_node)
-        current_node = get_cheapest_node(cost, processed)
+    processed.append(current_node)
+    current_node = get_cheapest_node(cost, processed)
+
+def get_road(graph, start, dest):
+    road = [start]
+    while road[-1] != dest:
+        if road[-1] not in graph:
+            return None
+        road.append(graph[road[-1]])
+    road.reverse()
+    return road
+
+current_start = 'Ciudad Polacca'
+current_destination = 'Al. Pacino'
+road = get_road(parents, current_destination, current_start)
+for i in road:
+    print('To {} cost {}'.format(i, cost[i]))
