@@ -25,4 +25,19 @@ def print_matrix(matrix, names):
 
 print_matrix(graph, names)
 cost_matrix = [[float('inf') for x in range(N)] for x in range(N)]
-print(cost_matrix)
+parent_matrix = [['' for x in range(N)] for x in range(N)]
+
+
+for i in range(N):
+    for j in range(N):
+        if i == j:
+            cost_matrix[i][j] = 0
+            parent_matrix[i][j] = i
+        elif graph[i][j] != 0:
+            cost_matrix[i][j] = graph[i][j]
+            parent_matrix[i][j] = i
+
+print()
+print_matrix(cost_matrix, names)
+print()
+print_matrix(parent_matrix, names)
