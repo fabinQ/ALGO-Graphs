@@ -41,3 +41,13 @@ print()
 print_matrix(cost_matrix, names)
 print()
 print_matrix(parent_matrix, names)
+
+for node in names_index:
+    print()
+    print(node)
+    for relations in graph:
+        print(relations)
+        for i in relations:
+            print(i)
+            if node == graph.index(relations):
+                print('tu')
