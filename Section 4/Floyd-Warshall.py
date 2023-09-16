@@ -65,3 +65,11 @@ path.append(4)
 start_node = 0
 end_node = 4
 print(f'From node {names[start_node]} to {names[end_node]} you must go through {"->".join(names[x] for x in path)}')
+
+
+for i in range(N):
+    for j in range(N):
+        if parent_matrix[i][j] != '':
+            parent_matrix[i][j] = names[parent_matrix[i][j]]
+
+print_matrix(parent_matrix,names)
