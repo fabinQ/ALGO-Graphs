@@ -7,7 +7,20 @@ graph = [#   A  B  C  D  E
             [0, 0,-1, 0, 4], # D
             [0, 0, 0, 0, 0]  # E
 ]
-
+'''Algorytm szuka najkrótszej ścieżki pomiędzy wszystkimi parami wierzchołków. Graf może mieć ujemne wagi ale nie może
+mieć ujemnych cykli. Do algorytmu potrzebujemy 2 tablic. Tablice kosztów opisująca w pierwotnej postaci koszt 
+poszczególnych krawędzi. Potem taki koszt przy kolejnych iteracjach jest uzupełniany sumę wag. Tablice rodziców która 
+opisuje z którego wierzchołka trzeba wyjść aby dojść do wierzchołka docelowego.
+1.  Tworzymy tablice kosztów i rodziców. Zaczynamy od całej macierzy z inf kosztów oraz całej pustej macierzy rodziców
+2.  Uzupełniamy o dane z grafu. Tablica kosztów na przekątnej 0, a rodziców na przekątnej wierzchołek aktualny np. B->B
+3.  Musimy przejść przez potrójną zagnieżdżoną pętle.
+    Przechodzimy przez przekątną macierzy czyli przez ilość nodów A do E czyli od 0 do 4.
+    Oraz przechodzimy przez każdą komórkę w grafie czyli dla grafu od 0 do 4 - range(5) oraz znowu od 0 do 4
+4.  Tam sprawdzamy czy znajdziemy tańszą drogę dla par nodów przechodząc przez node na przekątnej. W ten sposób 
+    uzupełniamy naszą tabele kosztów o nowe połączenia czyli nie da się za pierwszym razem przejść z A do C bezpośrednio.
+    Musimy być bezpośrednio na przekątnej B żeby dojść z A do C, oraz musimy uzupełnić tabele rodzica o node z którego 
+    musimy wyjść.
+'''
 def print_matrix(matrix, names):
     N = len(matrix)
     line = '    '
