@@ -7,7 +7,9 @@ g = {
     'Q': ['P', 'K', 'H'],
     'H': ['P', 'Q', 'K']
 }
-
+'''
+Potrzebujemy 3 zmiennych R,P,Q
+'''
 R = []
 P = list(g.keys())
 X = []
